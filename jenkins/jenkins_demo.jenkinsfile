@@ -7,7 +7,6 @@ node("server") {
     builder()          
   }
   catch (exec) {
-    #mail bcc: '', body: "<b>Jenkins Build Failure</b><br>\n<br>Project: ${env.JOB_NAME} <br>Branch: ${env.CHANGE_BRANCH} <br>Build Number: ${env.BUILD_NUMBER} <br>Build URL: ${env.BUILD_URL}<br>\n<br>Failure Details:<br>${exec}<br>*** THIS IS A SYSTEM GENERATED E-MAIL ****", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Jenkins Build Failure: ${env.JOB_NAME}", to: "${env.BUILD_NOTIFICATION_EMAIL_LIST},${env.CHANGE_AUTHOR_EMAIL}";
     currentBuild.result = 'FAILURE'
     throw exec
   }
