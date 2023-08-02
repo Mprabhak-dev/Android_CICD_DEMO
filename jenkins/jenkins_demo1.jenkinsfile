@@ -1,0 +1,12 @@
+node("server") {  
+  try {      
+       stage('Build Code') {
+           sh '.\gradlew.bat clean assembleDebug test connectedAndroidTest assembleRelease'
+       }      
+	}
+  catch (exec) {
+    currentBuild.result = 'FAILURE'
+    throw exec
+  }
+}
+
