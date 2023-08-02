@@ -1,4 +1,4 @@
-node("server") {  
+node {  
   try {      
        stage('Build Code') {
            sh '.\gradlew.bat clean assembleDebug test connectedAndroidTest assembleRelease'
